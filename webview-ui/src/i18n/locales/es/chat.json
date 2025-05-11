@@ -52,6 +52,10 @@
 		"title": "Continuar mientras se ejecuta",
 		"tooltip": "Continuar a pesar de las advertencias"
 	},
+	"killCommand": {
+		"title": "Terminar comando",
+		"tooltip": "Terminar el comando actual"
+	},
 	"resumeTask": {
 		"title": "Reanudar tarea",
 		"tooltip": "Reanudar la tarea actual"
@@ -65,7 +69,26 @@
 		"tooltip": "Cancelar la operación actual"
 	},
 	"scrollToBottom": "Desplazarse al final del chat",
+	"about": "Genera, refactoriza y depura código con asistencia de IA.<br />Consulta nuestra <DocsLink>documentación</DocsLink> para obtener más información.",
 	"onboarding": "<strong>Tu lista de tareas en este espacio de trabajo está vacía.</strong> Comienza escribiendo una tarea abajo. ¿No estás seguro cómo empezar? Lee más sobre lo que Roo puede hacer por ti en <DocsLink>la documentación</DocsLink>.",
+	"rooTips": {
+		"boomerangTasks": {
+			"title": "Tareas Boomerang",
+			"description": "Divide las tareas en partes más pequeñas y manejables."
+		},
+		"stickyModels": {
+			"title": "Modos persistentes",
+			"description": "Cada modo recuerda tu último modelo utilizado"
+		},
+		"tools": {
+			"title": "Herramientas",
+			"description": "Permite que la IA resuelva problemas navegando por la web, ejecutando comandos y mucho más."
+		},
+		"customizableModes": {
+			"title": "Modos personalizables",
+			"description": "Personalidades especializadas con sus propios comportamientos y modelos asignados"
+		}
+	},
 	"selectMode": "Seleccionar modo de interacción",
 	"selectApiConfig": "Seleccionar configuración de API",
 	"enhancePrompt": "Mejorar el mensaje con contexto adicional",
@@ -120,7 +143,12 @@
 		"didRead": "Roo leyó este archivo:",
 		"wantsToEdit": "Roo quiere editar este archivo:",
 		"wantsToEditOutsideWorkspace": "Roo quiere editar este archivo fuera del espacio de trabajo:",
-		"wantsToCreate": "Roo quiere crear un nuevo archivo:"
+		"wantsToCreate": "Roo quiere crear un nuevo archivo:",
+		"wantsToSearchReplace": "Roo quiere realizar búsqueda y reemplazo en este archivo:",
+		"didSearchReplace": "Roo realizó búsqueda y reemplazo en este archivo:",
+		"wantsToInsert": "Roo quiere insertar contenido en este archivo:",
+		"wantsToInsertWithLineNumber": "Roo quiere insertar contenido en este archivo en la línea {{lineNumber}}:",
+		"wantsToInsertAtEnd": "Roo quiere añadir contenido al final de este archivo:"
 	},
 	"directoryOperations": {
 		"wantsToViewTopLevel": "Roo quiere ver los archivos de nivel superior en este directorio:",
@@ -158,13 +186,6 @@
 		"hasQuestion": "Roo tiene una pregunta:"
 	},
 	"taskCompleted": "Tarea completada",
-	"shellIntegration": {
-		"unavailable": "Integración de shell no disponible",
-		"troubleshooting": "¿Sigues teniendo problemas? Haz clic aquí para ver la documentación de integración de shell.",
-		"checkSettings": "Revisa los ajustes alternativos de terminal en la página de configuración",
-		"updateVSCode": "Actualiza VSCode",
-		"supportedShell": "Asegúrate de usar un shell compatible: zsh, bash, fish o PowerShell"
-	},
 	"powershell": {
 		"issues": "Parece que estás teniendo problemas con Windows PowerShell, por favor consulta esta"
 	},
@@ -181,12 +202,12 @@
 		"copyToInput": "Copiar a la entrada (o Shift + clic)"
 	},
 	"announcement": {
-		"title": "🎉 Roo Code 3.13 publicado",
-		"description": "Roo Code 3.13 trae nuevas funcionalidades y mejoras basadas en tus comentarios.",
+		"title": "🎉 Roo Code 3.16 publicado",
+		"description": "Roo Code 3.16 trae nuevas funcionalidades y mejoras basadas en tus comentarios.",
 		"whatsNew": "Novedades",
-		"feature1": "<bold>Gemini 2.5 Flash Thinking</bold>: Ahora puedes usar la variante thinking de Gemini 2.5 Flash y especificar un presupuesto de tokens para thinking",
-		"feature2": "<bold>Mejoras en la interfaz</bold>: El encabezado de tareas, la vista de chat, la vista previa del historial y la vista de bienvenida han sido mejorados visualmente",
-		"feature3": "<bold>Correcciones de errores</bold>: Ediciones de diferencias más confiables y más",
+		"feature1": "<bold>Proveedores de API Groq y Chutes</bold>: Se ha añadido soporte para proveedores de API Groq y Chutes (¡gracias @shariqriazz!)",
+		"feature2": "<bold>Referencias de código clicables</bold>: Las referencias de código en las respuestas del modelo ahora navegan directamente a las líneas de origen (¡gracias @KJ7LNW!)",
+		"feature3": "<bold>Mejoras de estabilidad MCP</bold>: Se han corregido varios errores para mejorar la estabilidad de las integraciones MCP",
 		"hideButton": "Ocultar anuncio",
 		"detailsDiscussLinks": "Obtén más detalles y participa en <discordLink>Discord</discordLink> y <redditLink>Reddit</redditLink> 🚀"
 	},
@@ -211,5 +232,20 @@
 			"scrollUp": "Desplazar hacia arriba",
 			"close": "Cerrar navegador"
 		}
+	},
+	"codeblock": {
+		"tooltips": {
+			"expand": "Expandir bloque de código",
+			"collapse": "Contraer bloque de código",
+			"enable_wrap": "Activar ajuste de línea",
+			"disable_wrap": "Desactivar ajuste de línea",
+			"copy_code": "Copiar código"
+		}
+	},
+	"systemPromptWarning": "ADVERTENCIA: Anulación de instrucciones del sistema personalizada activa. Esto puede romper gravemente la funcionalidad y causar un comportamiento impredecible.",
+	"shellIntegration": {
+		"title": "Advertencia de ejecución de comandos",
+		"description": "Tu comando se está ejecutando sin la integración de shell de terminal de VSCode. Para suprimir esta advertencia, puedes desactivar la integración de shell en la sección <strong>Terminal</strong> de la <settingsLink>configuración de Roo Code</settingsLink> o solucionar problemas de integración de terminal de VSCode usando el enlace de abajo.",
+		"troubleshooting": "Haz clic aquí para ver la documentación de integración de shell."
 	}
 }
